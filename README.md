@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+Episode 14 - NetflixGPT - The Beginning
+0:00 to 8:35 - Introduction
+08:36 - Part -1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- How to create a React Project using “Create React App”
+- 14:00 - npm start
+- Setting up the Tailwind CSS to our App
+- 19:00 - how to install Tailwind CSS
+- Netflix website features noted which are need to be cloned
+- Features
+  33:00 - Part -2
+- Create a new Github Repository & push the code
+- Login & headers components created
+- Body.js component created
+- 42:18 - Setup Routing
+- 50:45 - Netflix Logo inserted
+- 55:35 - Login form
+- 01:10:10 - Create a Sign up form
+- 01:23:00 - “formik” library for forms
 
-## Available Scripts
+### 01:27:10 - Part -3
 
-In the project directory, you can run:
+- Form Validation -- `We validitate a form by 2 way.
+1st is by maintaing the state and pass the value of the input field.
+2nd is by useref.`
+- useRef hook
+- 01:34:00 - Regex validation
+- useRef hook usage
+- Showing error message while log in
 
-### `npm start`
+### 01:57:35 - Part - 4
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Authentication
+- Firebase -- `By using firebase we authrnticate our app.`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### FireBase setup -
 
-### `npm test`
+1. Get started our app and give name of project.
+2. Our app fire base created.
+3. Go to web (<>) logo and follow the steps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- install the firebase in our app by using `npm install firebase`
+- create a file firebase.js in util folder for configration and copy and paste the code that is in firebase.
+- In last run this command `npm install -g firebase-tools`
 
-### `npm run build`
+- 02:14:00 - Build command
+- 02:14:52 - Deploying
+- 02:16:35 - 3 commands to deploy application
+- 02:21:00 - Create Signup user account
+- Reading Firebase Documentation
+- 02:28:00 - Sign-in/ Sign-up Logic
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 02:29:46 - Part - 5
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 02:39:00 to 02:42:00 - User successfully registered
+- 02:43:20 - Sign in logic
+- 02:50:00 - Firebase error - user not found
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ### 02:52:05 - Part - 6
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Setup Redux store, userSlice
+- 03:12:20 - useDispatch()
+- 03:20:20 - useNavigate()
+- 03:22:35 - building signout feature
+- 03:33:30 - Manage users
+- 03:40:00 - Adding user profile pic
+- 03:42:48 - Fixing a Bug!
+  03:49:30 - Part - 8
+- TMDB APIs
+  —-----------------------------------------------------------------------------------
+  Episode 15 - Building the Core
+  0:52 - Part - 9
+- Fixing a Bug(when logged out also, any user can access browse page)
+- “Navigate”
+- 08:00 - useEffect
+- 14:00 - Sign-in redirecting to browse page & if the user is not logged in Redirect/browse
+  to login page and vice-versa
+  16:30 - Part -10
+- Till 21:10 - unSubscribing onAuthState Change
+  21:45 - Part -11 (Adding constant file to the project)
+- 23:35 - Make a separate file Constants.js
+- Till 30:25 - Adding user image into the Constants.js file
+- 31:45 - Add hardcoded values to the constants file
+  32:43 - Part - 12
+- 34:00 - TMDB API and how to fetch APIs
+- 45:50 - Strict Mode in React
+- Register TMDB API & Create an app and get access token
+- Get data from TMDB now playing movies list API
+  49:05 - Part -13
+- Adding movie data to the store (moviesSlice)
+  56:25 - Part - 14
+- Creating your own custom Hook
+  01:03:15 - Part -15 - Building Browse Page
+- UI Plan
+- MainContainer
+- VideoBackground
+- VideoTitle
+- Secondary Container
+- MovieList \* n
+- cards\*n
+  01:17:03 - Part -16
+- Building Video Title & Styling it by using Tailwind CSS
+  01:29:09 - Building Video Background
+  02:03:15 - Creating Custom Hook for trailer video
+  02:11:45 - Part -17 - Building Video Background
+  02:32:00 - Progress till now
+- Custom Hook for now playing Movies
+- Create movieSlice
+- Update store with moviesData
+- Planning for MainContainer & Secondary Container
+- Fetch Data for Trailer video
+- Update store with Trailer Video Data
+- Embedded the YouTube video & make it autoplay and mute
+- Tailwind classes to make MainContainer look awesome
+  02:37:44 - Part -18 - Creating Movie Suggestions List
+- Building Secondary Container
+- 02:56:48 - How to display 20 cards?(Map Function)
+  03:20:02 - Part -19 - Showing Popular Movies list on Browse page
+- UI Plan achieved
+- Build Secondary Component
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- Made the browse page amazing with Tailwind CSS
+- usePopularMovies custom Hook
+  —----------------------------------------------------------------------------------------------
+  Episode 16 - NetflixGPT - Wrapping Up
+  01:13 - Part -20
+- Introduction to GPT
+  05:02 - Part - 21
+- Building GPT Search Page
+  41:40 - Part - 22
+- Building Multi Language Pages
+  01:23:41 - Part - 23
+- Adding GPT feature to our App
+- 02:15:00 - Promise.all() function
+  02:33:33 - Part - 24
+- Buidling GPT Movie Suggestions UI
+  02:59:25 - Part - 25
+- Securing our API keys
+  03:08:45 - Part - 26
+- Understanding Memoization of data in our apps
+  03:16:50 - Part - 27
+- OpenAI usage bill and suggestions
+  03:22:16 - Part - 28
+- Making our App Mobile Responsive
+  Progress Track (readme file)
+- Get OpenAI API key
+- GPT Search API call
+- Fetched gptMovieSuggestions from TMDB
+- Created gptSlice & added data
+- Reused MovieList component to make movie suggestion container
+- Memoization
+- Added .env file
+- Adding .env file to gitignore
+- Made our site responsive
+  04:01:28 - NetflixGPT - Ending Note
+  —-----------------------------------\*\*\*\*------------------------------------------------------------------
