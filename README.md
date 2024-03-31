@@ -8,7 +8,9 @@ Episode 14 - NetflixGPT - The Beginning
 - 19:00 - how to install Tailwind CSS
 - Netflix website features noted which are need to be cloned
 - Features
-  33:00 - Part -2
+
+### 33:00 - Part -2
+
 - Create a new Github Repository & push the code
 - Login & headers components created
 - Body.js component created
