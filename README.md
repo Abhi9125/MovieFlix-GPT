@@ -47,7 +47,7 @@ Episode 14 - NetflixGPT - The Beginning
 
 - 02:14:00 - Build command
 - 02:14:52 - Deploying
-- 02:16:35 - 3 commands to deploy application
+- 02:16:35 - 3 commands to deploy application , 1- firebase login, 2 - firebase init , 3- firebase deploy.
 - 02:21:00 - Create Signup user account
 - Reading Firebase Documentation
 - 02:28:00 - Sign-in/ Sign-up Logic
@@ -58,7 +58,11 @@ Episode 14 - NetflixGPT - The Beginning
 - 02:43:20 - Sign in logic
 - 02:50:00 - Firebase error - user not found
 
-  ### 02:52:05 - Part - 6
+#### Explaination part 4 & 5 -->
+
+In this part we install the firebase and configure it then deploy our app with using firebase, Then we authenicatate our app with signUP and signIn.
+
+### 02:52:05 - Part - 6
 
 - Setup Redux store, userSlice
 - 03:12:20 - useDispatch()

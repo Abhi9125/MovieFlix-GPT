@@ -2,7 +2,11 @@ import React, { useRef, useState } from "react";
 // Importing the Header component
 import Header from "./Header";
 import checkValiditation from "../Utils/Validitation";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../Utils/firebase";
 // SignIn component definition
 const SignIn = () => {
   // State hook for managing sign-in and sign-up toggle
@@ -38,6 +42,46 @@ const SignIn = () => {
           name.current.value
         );
     setErrorMessage(response);
+
+    //  If validation pass then call the firebase authentication function.
+    if (response === null) {
+      // If isSignIn is false then signup the user
+      if (isSignIn === false) {
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "-" + errorMessage);
+          });
+      } else {
+        // If isSignIn is true, sign in the user
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "-" + errorMessage);
+          });
+      }
+    }
   };
 
   /**
