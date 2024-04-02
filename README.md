@@ -64,14 +64,62 @@ In this part we install the firebase and configure it then deploy our app with u
 
 ### 02:52:05 - Part - 6
 
-- Setup Redux store, userSlice
+- Setup Redux store, userSlice -- Command - npm i -D @reduxjs/toolkit, npm react-redux
+- 03-05-00 - onAuthChange()
 - 03:12:20 - useDispatch()
 - 03:20:20 - useNavigate()
+- 03:22:50 - Building header for browse page.
 - 03:22:35 - building signout feature
-- 03:33:30 - Manage users
+- 03:33:30 - Manage users and update the user profile by using the API.
 - 03:40:00 - Adding user profile pic
 - 03:42:48 - Fixing a Bug!
-  03:49:30 - Part - 8
+
+#### Explain --
+
+Frist we setup redux store. The need of resux store is when the user signUp/signIn or signOut our redux store will update.
+But the problem is that we dispach an action happen multiple time like when user signUp/ when user signIn so avoding this again and again dispatch we use a utility given by firebase `onAuthChange` this api call when the user signIn/signUp and signOut. Using onAuthStateChanged at the root level: The onAuthStateChanged function is used to monitor the user's authentication state. In this code, it is called at the root level of the component tree, which means that it will monitor the authentication state of the user throughout the entire application. This is useful because it allows the application to keep track of the user's authentication state and render the appropriate components based on whether the user is signed in or not.
+When you use onAuthStateChanged at the root level, you can ensure that the user's authentication state is always up-to-date, regardless of where they are in the application. This is especially important for applications that have different components or pages for signed-in and signed-out users. 2. Using useEffect here: The useEffect hook is used to manage side effects in functional components. In this code, it is used to call the onAuthStateChanged function when the component mounts.
+
+Using useEffect ensures that the onAuthStateChanged function is only called once, when the component first mounts. This is important because calling it multiple times could result in unnecessary re-renders and performance issues.
+
+Additionally, using useEffect with an empty dependency array ([]) ensures that the function passed to useEffect is only called once, when the component first mounts.
+
+Using useEffect here is a best practice for managing side effects in functional components, and it helps ensure that the onAuthStateChanged function is called correctly and efficiently.
+
+After managing auth sate change we dispatch the user detail to redux store and navigate to browser is user signIn/signUp but if user signOut we naviagte to "/" root page.
+`naviage always use as a child  of Router.`
+For signout we use firebase signOut api in Header Component.we also update the user profile like displayName and imageURL by using the profileUpdate api given by firebase.
+
+we fixing a bug. when we update our store in Body section when onAuthStatechange is trigger it not update the current useer displayName and imageURL, for fixing this issue we update our store from
+sign component.
+
+````JS
+            const user = userCredential.user;
+            updateProfile(user, {
+              displayName: name.current.value,
+              photoURL: "https://avatars.githubusercontent.com/u/38842501?v=4",
+            })
+              .then(() => {
+                /**
+                 * ! we not directly access the user data bcz itis not updated so we access
+                 * ! updated data by using auth.current.
+                 */
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(
+                  addUser({
+                    uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL,
+                  })
+                );
+              })
+              .catch((error) => {
+                // An error occurred
+                // ...
+              });```
+03:49:30 - Part - 8
+
 - TMDB APIs
   —-----------------------------------------------------------------------------------
   Episode 15 - Building the Core
@@ -162,3 +210,4 @@ In this part we install the firebase and configure it then deploy our app with u
 - Made our site responsive
   04:01:28 - NetflixGPT - Ending Note
   —-----------------------------------\*\*\*\*------------------------------------------------------------------
+````
