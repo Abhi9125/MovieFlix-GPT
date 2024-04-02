@@ -74,51 +74,29 @@ In this part we install the firebase and configure it then deploy our app with u
 - 03:40:00 - Adding user profile pic
 - 03:42:48 - Fixing a Bug!
 
-#### Explain --
+#### Explain part - 6 --
 
-Frist we setup redux store. The need of resux store is when the user signUp/signIn or signOut our redux store will update.
-But the problem is that we dispach an action happen multiple time like when user signUp/ when user signIn so avoding this again and again dispatch we use a utility given by firebase `onAuthChange` this api call when the user signIn/signUp and signOut. Using onAuthStateChanged at the root level: The onAuthStateChanged function is used to monitor the user's authentication state. In this code, it is called at the root level of the component tree, which means that it will monitor the authentication state of the user throughout the entire application. This is useful because it allows the application to keep track of the user's authentication state and render the appropriate components based on whether the user is signed in or not.
-When you use onAuthStateChanged at the root level, you can ensure that the user's authentication state is always up-to-date, regardless of where they are in the application. This is especially important for applications that have different components or pages for signed-in and signed-out users. 2. Using useEffect here: The useEffect hook is used to manage side effects in functional components. In this code, it is used to call the onAuthStateChanged function when the component mounts.
+In this part, we're setting up a Redux store to manage the user's authentication state. We want to dispatch an action to the store when the user signs in, signs up, or signs out. However, the problem is that the action is being dispatched multiple times when the user signs in or signs up.
 
-Using useEffect ensures that the onAuthStateChanged function is only called once, when the component first mounts. This is important because calling it multiple times could result in unnecessary re-renders and performance issues.
+To avoid dispatching the action multiple times, we're using a utility provided by Firebase called onAuthStateChanged. This API call monitors the user's authentication state and is called at the root level of the component tree. This is helpful because it allows the application to keep track of the user's authentication state and render the appropriate components based on whether the user is signed in or not.
+
+When we use onAuthStateChanged at the root level, we can ensure that the user's authentication state is always up-to-date, regardless of where they are in the application. This is especially important for applications that have different components or pages for signed-in and signed-out users.
+
+We're also using the useEffect hook to manage side effects in functional components. Specifically, we're using it to call the onAuthStateChanged function when the component mounts.
+
+When we use useEffect, it ensures that the onAuthStateChanged function is only called once, when the component first mounts. This is important because calling it multiple times could result in unnecessary re-renders and performance issues.
 
 Additionally, using useEffect with an empty dependency array ([]) ensures that the function passed to useEffect is only called once, when the component first mounts.
 
-Using useEffect here is a best practice for managing side effects in functional components, and it helps ensure that the onAuthStateChanged function is called correctly and efficiently.
+Using useEffect in this way is a best practice for managing side effects in functional components, and it helps ensure that the onAuthStateChanged function is called correctly and efficiently.
 
-After managing auth sate change we dispatch the user detail to redux store and navigate to browser is user signIn/signUp but if user signOut we naviagte to "/" root page.
-`naviage always use as a child  of Router.`
-For signout we use firebase signOut api in Header Component.we also update the user profile like displayName and imageURL by using the profileUpdate api given by firebase.
+After managing the authentication state change, we dispatch the user's details to the Redux store and navigate to the browser if the user signs in or signs up. However, if the user signs out, we navigate to the root URL ("/") relative to the router.
 
-we fixing a bug. when we update our store in Body section when onAuthStatechange is trigger it not update the current useer displayName and imageURL, for fixing this issue we update our store from
-sign component.
+In the Header component, we're using the Firebase signOut API to sign the user out. We're also updating the user's profile using the Firebase profileUpdate API.
 
-````JS
-            const user = userCredential.user;
-            updateProfile(user, {
-              displayName: name.current.value,
-              photoURL: "https://avatars.githubusercontent.com/u/38842501?v=4",
-            })
-              .then(() => {
-                /**
-                 * ! we not directly access the user data bcz itis not updated so we access
-                 * ! updated data by using auth.current.
-                 */
-                const { uid, email, displayName, photoURL } = auth.currentUser;
-                dispatch(
-                  addUser({
-                    uid: uid,
-                    email: email,
-                    displayName: displayName,
-                    photoURL,
-                  })
-                );
-              })
-              .catch((error) => {
-                // An error occurred
-                // ...
-              });```
-03:49:30 - Part - 8
+We fixed a bug where the user's display name and image URL were not updating when the authentication state changed. To fix this issue, we updated the Redux store directly from the SignIn component.
+
+### 03:49:30 - Part - 8
 
 - TMDB APIs
   —-----------------------------------------------------------------------------------
@@ -210,4 +188,7 @@ sign component.
 - Made our site responsive
   04:01:28 - NetflixGPT - Ending Note
   —-----------------------------------\*\*\*\*------------------------------------------------------------------
-````
+
+```
+
+```
